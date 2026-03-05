@@ -1,27 +1,29 @@
-import { getUnits } from '../../lib/content';
+import { getUnits, getSiteConfig } from '../../lib/content';
 import PageHero from '../components/PageHero';
 import UnitsGrid from '../components/UnitsGrid';
+import CtaBand from '../components/CtaBand';
 
 export const metadata = {
-  title: 'Floor Plans | Himount Gardens',
-  description: 'Studio, one-bedroom, and two-bedroom floor plans at Himount Gardens.'
+  title: 'Floor Plans',
+  description: 'Studio, one-bedroom, and two-bedroom floor plans at Himount Gardens in Milwaukee.'
 };
 
 export default function FloorPlansPage() {
+  const site = getSiteConfig();
   const units = getUnits();
 
   return (
     <main>
       <PageHero
-        title="Floor Plans"
-        subtitle="Explore current apartment types and pricing at Himount Gardens."
-        ctaText="Schedule Tour"
-        ctaHref="/contact"
+        title="Floor Plans & Pricing"
+        subtitle="Explore current apartment types and pricing. Contact us to confirm availability."
       />
-
-      <section className="container section">
-        <UnitsGrid units={units} />
+      <section className="section">
+        <div className="container">
+          <UnitsGrid units={units} />
+        </div>
       </section>
+      <CtaBand site={site} />
     </main>
   );
 }
