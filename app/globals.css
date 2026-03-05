@@ -1,18 +1,267 @@
-:root { color-scheme: light; }
+:root {
+  --bg: #f7f3ec;
+  --surface: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #1f3a5f;
+  --accent: #d9c7a4;
+  --border: #e5e7eb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  background: #f8f6f2;
-  color: #1f2937;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
-main { max-width: 900px; margin: 0 auto; padding: 2rem 1rem 4rem; }
-.card {
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+.site-header {
   background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  margin-top: 1rem;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
-h1 { margin: 0 0 .5rem; color: #1f3a5f; }
-.muted { color: #6b7280; }
-ul { margin: .5rem 0; }
+
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  padding: 0.9rem 0;
+}
+
+.brand-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-name {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.brand-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.nav-link {
+  font-size: 0.95rem;
+}
+
+.call-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.call-cta:hover {
+  text-decoration: none;
+  filter: brightness(1.06);
+}
+
+.hero {
+  background: linear-gradient(120deg, #ffffff, #f3e9da);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero-inner {
+  padding: 2.3rem 0 2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.hero h1 {
+  margin: 0.2rem 0 0.3rem;
+  color: var(--primary);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+}
+
+.hero-subtitle {
+  margin: 0;
+  max-width: 70ch;
+}
+
+.hero-cta {
+  margin-top: 1rem;
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+}
+
+.hero-cta:hover {
+  text-decoration: none;
+  filter: brightness(1.06);
+}
+
+.section {
+  padding: 1.6rem 0;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.units-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.unit-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.unit-card h3 {
+  margin: 0;
+  color: var(--primary);
+}
+
+.price {
+  font-weight: 700;
+  margin: 0.35rem 0;
+}
+
+.availability {
+  margin: 0.15rem 0 0.6rem;
+  color: var(--muted);
+}
+
+.markdown h2,
+.markdown h3 {
+  color: var(--primary);
+}
+
+.markdown ul {
+  padding-left: 1.15rem;
+}
+
+.two-col {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.contact-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 0.7rem;
+  font: inherit;
+}
+
+.contact-form button {
+  border: none;
+  border-radius: 8px;
+  padding: 0.65rem 0.9rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  width: fit-content;
+  cursor: pointer;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: #fff;
+  margin-top: 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  gap: 1rem;
+  padding: 1.2rem 0 1.4rem;
+}
+
+.footer-grid h3,
+.footer-grid h4 {
+  margin: 0 0 0.35rem;
+  color: var(--primary);
+}
+
+.footer-grid p {
+  margin: 0.3rem 0;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+@media (min-width: 860px) {
+  .header-inner {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .main-nav {
+    justify-content: center;
+  }
+
+  .units-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .two-col {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
