@@ -1,4 +1,7 @@
 import './globals.css';
+import { getSiteConfig } from '../lib/content';
+import SiteHeader from './components/SiteHeader';
+import SiteFooter from './components/SiteFooter';
 
 export const metadata = {
   title: 'Himount Gardens',
@@ -6,9 +9,15 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const site = getSiteConfig();
+
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SiteHeader site={site} />
+        {children}
+        <SiteFooter site={site} />
+      </body>
     </html>
   );
 }
