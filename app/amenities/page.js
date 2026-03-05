@@ -1,10 +1,11 @@
 import { getPage, getSiteConfig } from '../../lib/content';
 import PageHero from '../components/PageHero';
 import MarkdownContent from '../components/MarkdownContent';
+import CtaBand from '../components/CtaBand';
 
 export const metadata = {
-  title: 'Amenities | Himount Gardens',
-  description: 'Amenities and community features at Himount Gardens.'
+  title: 'Amenities',
+  description: 'Community amenities and features at Himount Gardens.'
 };
 
 export default function AmenitiesPage() {
@@ -16,13 +17,13 @@ export default function AmenitiesPage() {
       <PageHero
         title={page.title || 'Amenities'}
         subtitle="Community features designed for practical, comfortable living."
-        ctaText={site.marketing_knobs?.secondary_cta || 'Schedule Tour'}
-        ctaHref="/contact"
       />
-
-      <section className="container section">
-        <MarkdownContent html={page.html} />
+      <section className="section">
+        <div className="container" style={{ maxWidth: '780px' }}>
+          <MarkdownContent html={page.html} />
+        </div>
       </section>
+      <CtaBand site={site} />
     </main>
   );
 }
