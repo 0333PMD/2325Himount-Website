@@ -9,15 +9,18 @@ media_folder: "public/images"
 public_folder: "/images"
 
 collections:
-  - name: "site"
-    label: "Site Settings"
+  - name: "site_metadata"
+    label: "Global Settings"
+    delete: false
+    editor:
+      preview: false
     files:
-      - file: "content/site.yaml"
-        label: "Global Settings"
-        name: "global"
+      - name: "settings"
+        label: "Site Settings"
+        file: "content/site.yaml"
         fields:
           - { label: "Site Title", name: "site_title", widget: "string" }
-          - { label: "Phone Number", name: "phone_number", widget: "string" }
+          - { label: "Phone Number", name: "phone_number", widget: "string", hint: "Example: (414) 445-9772", pattern: ['^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$', "Must be a valid US phone number"] }
           - label: "Address"
             name: "address"
             widget: "object"
@@ -26,32 +29,93 @@ collections:
               - { label: "City", name: "city", widget: "string" }
               - { label: "State", name: "state", widget: "string" }
               - { label: "ZIP", name: "zip", widget: "string" }
+          - label: "Marketing Knobs"
+            name: "marketing_knobs"
+            widget: "object"
+            fields:
+              - { label: "Primary CTA", name: "hero_cta", widget: "string", default: "Check Availability" }
+              - { label: "Secondary CTA", name: "secondary_cta", widget: "string", default: "Schedule Tour" }
+              - { label: "Show Announcement Banner", name: "announcement_enabled", widget: "boolean", default: false }
+              - { label: "Announcement Text", name: "announcement_text", widget: "text", required: false }
+          - label: "Brand Colors"
+            name: "colors"
+            widget: "object"
+            fields:
+              - { label: "Primary", name: "primary", widget: "color" }
+              - { label: "Secondary", name: "secondary", widget: "color" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Equal Housing", name: "equal_housing", widget: "boolean", default: true }
+              - { label: "Disclaimer", name: "disclaimer", widget: "text" }
 
-  - name: "units"
+  - name: "unit_types"
     label: "Unit Types"
     files:
-      - file: "content/units.yaml"
+      - name: "units"
         label: "Units"
-        name: "units"
+        file: "content/units.yaml"
         fields:
           - label: "Units"
             name: "units"
             widget: "list"
+            summary: "{{fields.title}} • {{fields.price_range}}"
             fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Price Range", name: "price_range", widget: "string" }
-              - { label: "Sq Ft", name: "sq_ft", widget: "number", required: false }
-              - { label: "Availability", name: "availability", widget: "select", options: ["Available", "Waitlist", "Sold Out"] }
+              - { label: "Title", name: "title", widget: "string", hint: "Studio, 1 Bedroom, 2 Bedroom" }
+              - { label: "Price Range", name: "price_range", widget: "string", hint: "Example: $1,000" }
+              - { label: "Square Footage", name: "sq_ft", widget: "number", required: false }
+              - { label: "Availability", name: "availability", widget: "select", options: ["Available", "Waitlist", "Sold Out"], default: "Waitlist" }
               - { label: "Features", name: "features", widget: "list", field: { label: "Feature", name: "feature", widget: "string" } }
               - { label: "Income Restricted", name: "income_restricted", widget: "boolean", default: false }
 
   - name: "pages"
     label: "Pages"
-    folder: "content/pages"
-    create: false
-    slug: "{{slug}}"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
-      - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
-      - { label: "Body", name: "body", widget: "markdown" }
+    files:
+      - name: "home"
+        label: "Home"
+        file: "content/pages/home.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "amenities"
+        label: "Amenities"
+        file: "content/pages/amenities.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "neighborhood"
+        label: "Neighborhood"
+        file: "content/pages/neighborhood.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+      - name: "contact"
+        label: "Contact"
+        file: "content/pages/contact.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "SEO Description", name: "seo_description", widget: "text", required: false }
+          - { label: "Hero Image", name: "hero_image", widget: "image", required: false }
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "gallery"
+    label: "Gallery"
+    files:
+      - name: "gallery_images"
+        label: "Gallery Images"
+        file: "content/gallery.yaml"
+        fields:
+          - label: "Images"
+            name: "images"
+            widget: "list"
+            summary: "{{fields.alt_text}}"
+            fields:
+              - { label: "Image", name: "src", widget: "image" }
+              - { label: "Alt Text", name: "alt_text", widget: "string" }
