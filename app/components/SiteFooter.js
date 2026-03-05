@@ -1,21 +1,60 @@
+import Link from 'next/link';
+import { Phone, MapPin } from 'lucide-react';
+
 export default function SiteFooter({ site }) {
+  const year = new Date().getFullYear();
+  const addr = site.address || {};
+  const addressLine = typeof addr === 'string'
+    ? addr
+    : `${addr.street}, ${addr.city}, ${addr.state} ${addr.zip}`;
+
   return (
     <footer className="site-footer">
-      <div className="container footer-grid">
-        <div>
-          <h3>{site.site_title}</h3>
-          <p>
-            {site.address?.street}<br />
-            {site.address?.city}, {site.address?.state} {site.address?.zip}
-          </p>
-        </div>
+      <div className="footer-top">
+        <div className="container footer-grid">
 
-        <div>
-          <h4>Leasing</h4>
-          <p>
-            Phone: <a href={`tel:${site.phone_number?.replace(/[^0-9]/g, '')}`}>{site.phone_number}</a>
-          </p>
-          <p>{site.footer?.disclaimer}</p>
+          <div className="footer-section">
+            <p className="footer-brand">{site.site_title}</p>
+            <div className="footer-contact">
+              <a href={`tel:${site.phone_number?.replace(/[^0-9]/g, '')}`}>
+                <Phone size={14} style={{ flexShrink: 0, marginTop: '2px' }} />
+                {site.phone_number}
+              </a>
+              <span>
+                <MapPin size={14} style={{ flexShrink: 0, marginTop: '3px' }} />
+                {addressLine}
+              </span>
+            </div>
+          </div>
+
+          <div className="footer-section">
+            <h4>Navigate</h4>
+            <nav className="footer-nav">
+              {(site.nav || []).map((item) => (
+                <Link key={item.href} href={item.href}>{item.label}</Link>
+              ))}
+            </nav>
+          </div>
+
+          <div className="footer-section">
+            <h4>Legal</h4>
+            <p className="footer-disclaimer">
+              {site.footer?.disclaimer || 'Pricing and availability subject to change without notice.'}
+            </p>
+            {site.footer?.equal_housing !== false && (
+              <p className="footer-disclaimer" style={{ marginTop: '0.75rem' }}>
+                Equal Opportunity Housing Provider.
+              </p>
+            )}
+          </div>
+
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="container footer-bottom-inner">
+          <span>© {year} {site.site_title}. All rights reserved.</span>
+          <span>Professional Management · Milwaukee, WI</span>
         </div>
       </div>
     </footer>
