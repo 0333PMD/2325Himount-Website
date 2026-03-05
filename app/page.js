@@ -1,7 +1,10 @@
 import { getPage, getSiteConfig, getUnits } from '../lib/content';
-import PageHero from './components/PageHero';
-import MarkdownContent from './components/MarkdownContent';
+import HomeHero from './components/HomeHero';
+import StatsBar from './components/StatsBar';
+import FeaturesList from './components/FeaturesList';
 import UnitsGrid from './components/UnitsGrid';
+import CtaBand from './components/CtaBand';
+import MarkdownContent from './components/MarkdownContent';
 
 export default function HomePage() {
   const site = getSiteConfig();
@@ -10,21 +13,31 @@ export default function HomePage() {
 
   return (
     <main>
-      <PageHero
-        title={home.title || site.site_title}
-        subtitle="Comfortable apartment living in Milwaukee with practical amenities and responsive management."
-        ctaText={site.marketing_knobs?.hero_cta || 'Check Availability'}
-        ctaHref="/contact"
-      />
+      <HomeHero site={site} />
+      <StatsBar />
 
-      <section className="container section">
-        <MarkdownContent html={home.html} />
+      <section className="section">
+        <div className="container">
+          <MarkdownContent html={home.html} />
+        </div>
       </section>
 
-      <section className="container section">
-        <h2>Floor Plan Snapshot</h2>
-        <UnitsGrid units={units} />
+      <FeaturesList />
+
+      <section className="section units-section">
+        <div className="container">
+          <div className="text-center" style={{ marginBottom: '2.75rem' }}>
+            <span className="eyebrow">Apartment Options</span>
+            <h2 className="section-title">Floor Plan Snapshot</h2>
+            <p className="section-subtitle">
+              Studios starting at $860/mo. One- and two-bedroom options available. Contact us for current availability.
+            </p>
+          </div>
+          <UnitsGrid units={units} />
+        </div>
       </section>
+
+      <CtaBand site={site} />
     </main>
   );
 }
