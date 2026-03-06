@@ -10,39 +10,57 @@ export default function HomeHero({ site, heroImage }) {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
+        alignItems: 'flex-end',
+        justifyContent: 'flex-start',
       } : undefined}
     >
-      <div className="container hero-inner">
-        <p className="hero-eyebrow">Milwaukee, Wisconsin · Est. 1925</p>
-        <h1
-          className="hero-title"
-          style={heroImage ? { color: 'var(--primary)' } : undefined}
-        >
-          Your Home in Milwaukee Awaits
-        </h1>
-        {!heroImage && (
-          <p className="hero-subtitle">
-            Comfortable studio, one-bedroom, and two-bedroom apartments at Himount Gardens —
-            a well-managed community on Milwaukee&rsquo;s west side.
-          </p>
-        )}
-        <div className="hero-ctas">
-          <Link href="/contact" className="btn-primary">
-            {site.marketing_knobs?.hero_cta || 'Check Availability'}
-            <ArrowRight size={16} />
-          </Link>
-          <a
-            href={"tel:" + (site.phone_number?.replace(/[^0-9]/g, '') || '')}
-            className={heroImage ? 'btn-primary' : 'btn-outline'}
-            style={heroImage ? {
-              background: 'rgba(255,255,255,0.92)',
-              color: 'var(--primary)',
-              border: 'none',
-            } : undefined}
+      <div
+        className="container hero-inner"
+        style={heroImage ? {
+          alignItems: 'flex-start',
+          paddingBottom: '2.5rem',
+        } : undefined}
+      >
+        <div style={heroImage ? {
+          display: 'inline-block',
+          background: 'rgba(247, 243, 236, 0.82)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          borderRadius: '14px',
+          padding: '1.5rem 2rem',
+          maxWidth: '520px',
+        } : undefined}>
+          <p className="hero-eyebrow">Milwaukee, Wisconsin · Est. 1925</p>
+          <h1
+            className="hero-title"
+            style={heroImage ? { color: 'var(--primary)', marginBottom: '1.25rem' } : undefined}
           >
-            <Phone size={15} />
-            {site.phone_number}
-          </a>
+            Your Home in Milwaukee Awaits
+          </h1>
+          {!heroImage && (
+            <p className="hero-subtitle">
+              Comfortable studio, one-bedroom, and two-bedroom apartments at Himount Gardens —
+              a well-managed community on Milwaukee&rsquo;s west side.
+            </p>
+          )}
+          <div className="hero-ctas">
+            <Link href="/contact" className="btn-primary">
+              {site.marketing_knobs?.hero_cta || 'Check Availability'}
+              <ArrowRight size={16} />
+            </Link>
+            <a
+              href={"tel:" + (site.phone_number?.replace(/[^0-9]/g, '') || '')}
+              className={heroImage ? 'btn-primary' : 'btn-outline'}
+              style={heroImage ? {
+                background: 'var(--primary)',
+                color: '#fff',
+                border: 'none',
+              } : undefined}
+            >
+              <Phone size={15} />
+              {site.phone_number}
+            </a>
+          </div>
         </div>
       </div>
     </section>
