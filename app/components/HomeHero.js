@@ -1,9 +1,17 @@
 import Link from 'next/link';
 import { Phone, ArrowRight } from 'lucide-react';
 
-export default function HomeHero({ site }) {
+export default function HomeHero({ site, heroImage }) {
   return (
-    <section className="home-hero">
+    <section
+      className="home-hero"
+      style={heroImage ? {
+        backgroundImage: 'url(' + heroImage + ')',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      } : undefined}
+    >
       <div className="container hero-inner">
         <p className="hero-eyebrow">Milwaukee, Wisconsin · Est. 1925</p>
         <h1 className="hero-title">Your Home in Milwaukee Awaits</h1>
