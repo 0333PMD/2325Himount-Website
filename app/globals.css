@@ -708,3 +708,17 @@ img, svg { display: block; }
   color: var(--muted);
   text-align: center;
 }
+
+/* Unit interior photo thumbnails */
+.unit-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  border-bottom: 1px solid var(--border);
+}
+.unit-photo-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}

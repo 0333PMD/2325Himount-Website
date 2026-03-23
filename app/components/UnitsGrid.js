@@ -1,6 +1,23 @@
 import Link from 'next/link';
 import { CheckCircle, Building2 } from 'lucide-react';
 
+function UnitPhotos({ photos }) {
+  if (!photos || !photos.length) return null;
+  return (
+    <div className="unit-photos">
+      {photos.map((photo, i) => (
+        <img
+          key={i}
+          src={photo.src}
+          alt={photo.alt_text || 'Unit interior'}
+          className="unit-photo-thumb"
+          loading="lazy"
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function UnitsGrid({ units = [], disclaimer }) {
   if (!units.length) {
     return <p className="muted">Unit information will be updated soon.</p>;
@@ -17,6 +34,7 @@ export default function UnitsGrid({ units = [], disclaimer }) {
         {units.map((unit) => {
           const isAvailable = unit.availability === 'Available';
           const floorPlan = unit.floor_plan || null;
+          const photos = unit.photos || [];
           return (
             <article key={unit.title} className="unit-card">
               {floorPlan ? (
@@ -33,6 +51,8 @@ export default function UnitsGrid({ units = [], disclaimer }) {
                   <span className="unit-img-label">Photo Coming Soon</span>
                 </div>
               )}
+
+              {photos.length > 0 && <UnitPhotos photos={photos} />}
 
               <div className="unit-body">
                 <div className="unit-header">

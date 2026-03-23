@@ -64,6 +64,16 @@ collections:
             fields:
               - { label: "Title", name: "title", widget: "string", hint: "Studio, 1 Bedroom, 2 Bedroom" }
               - { label: "Floor Plan Image", name: "floor_plan", widget: "image", required: false, hint: "Upload or select a floor plan image" }
+              - label: "Interior Photos"
+                name: "photos"
+                widget: "list"
+                required: false
+                max: 6
+                hint: "Up to 6 interior photos for this unit type"
+                summary: "{{fields.alt_text}}"
+                fields:
+                  - { label: "Photo", name: "src", widget: "image" }
+                  - { label: "Caption", name: "alt_text", widget: "string", required: false, hint: "Brief description of the photo" }
               - { label: "Price Range", name: "price_range", widget: "string", hint: "Example: $1,000" }
               - { label: "Square Footage", name: "sq_ft", widget: "number", required: false }
               - { label: "Availability", name: "availability", widget: "select", options: ["Available", "Waitlist", "Sold Out"], default: "Waitlist" }
