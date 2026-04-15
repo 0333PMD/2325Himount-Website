@@ -8,6 +8,19 @@ units:
       - Efficient layout
       - Natural light
     income_restricted: false
+    photos:
+      - src: /images/unit-505-pic-1.jpg
+        alt_text: Living Space Pt.1
+      - src: /images/unit-505-pic-4.jpg
+        alt_text: Living Space Pt.2
+      - src: /images/unit-505-pic-6.jpg
+        alt_text: Walk Thru Closet & Built in Linen Closet
+      - src: /images/unit-505-pic-1.jpg
+        alt_text: Dinning Nook
+      - src: /images/unit-505-pic-2.jpg
+        alt_text: "Kitchen "
+      - alt_text: Bathroom
+        src: /images/unit-505-pic-5.jpg
   - title: 1 Bedroom — Plan A
     floor_plan: /images/one_bedroom-619-sq-ft.gif
     price_range: $1,000
