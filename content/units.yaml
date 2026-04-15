@@ -7,7 +7,22 @@ units:
     features:
       - Efficient layout
       - Natural light
+      - Built in Linen Closet
+      - Walk-Through Closet
     income_restricted: false
+    photos:
+      - src: /images/unit-505-pic-1.jpg
+        alt_text: Living Space Pt.1
+      - src: /images/unit-505-pic-4.jpg
+        alt_text: Living Space Pt.2
+      - src: /images/unit-505-pic-6.jpg
+        alt_text: Walk-Through Closet & Built in Linen Closet
+      - src: /images/unit-505-pic-1.jpg
+        alt_text: Dinning Nook
+      - src: /images/unit-505-pic-2.jpg
+        alt_text: "Kitchen "
+      - alt_text: Bathroom
+        src: /images/unit-505-pic-5.jpg
   - title: 1 Bedroom — Plan A
     floor_plan: /images/one_bedroom-619-sq-ft.gif
     price_range: $1,000
@@ -49,15 +64,37 @@ units:
   - title: 2 Bedroom
     floor_plan: /images/two_bedroom.gif
     price_range: $1,150
-    sq_ft: null
+    sq_ft: 900
     availability: Waitlist
     features:
       - Two-bedroom layout
       - Extra storage
+      - "Built in China Cabinets "
+      - Built in Linen Closet
     income_restricted: false
+    photos:
+      - src: /images/hallway.jpg
+        alt_text: "Entrance/ Hallway "
+      - src: /images/hallway-linen-closet.jpg
+        alt_text: "Linen Closet "
+      - src: /images/304-living-room.jpg
+        alt_text: "Living Room "
+      - src: /images/304-dining-into-kitchen.jpg
+        alt_text: Kitchen/ Dinning Nook
+      - src: /images/304-kitchen.jpg
+        alt_text: Kitchen
   - availability: Waitlist
     income_restricted: false
-    title: 1 Bedroom - Plan E
+    title: 1 Bedroom - Plan E- Eat In Kitchen
     floor_plan: /images/1-bed-eat-in-kitchen.svg
     price_range: "940"
     sq_ft: 530
+    photos:
+      - src: /images/living-room.jpg
+        alt_text: "Living Room "
+      - src: /images/bedroom.jpg
+        alt_text: "Bedroom "
+      - src: /images/kitchen.jpg
+        alt_text: Kitchen
+      - src: /images/bathroom.jpg
+        alt_text: "Bathroom "
