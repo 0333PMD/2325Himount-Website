@@ -7,5 +7,32 @@
   </head>
   <body>
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Redirect the top-nav "Media" button to our custom media manager
+      (function() {
+        function hijackMedia() {
+          var links = document.querySelectorAll('a[href], button, span');
+          links.forEach(function(el) {
+            // Decap renders the Media nav as a link or button with the text "Media"
+            if (el.textContent.trim() === 'Media' && !el.dataset.hijacked) {
+              el.dataset.hijacked = 'true';
+              el.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                window.location.href = '/admin/media.html';
+              }, true);
+            }
+          });
+        }
+        // Run repeatedly since Decap renders async via React
+        var interval = setInterval(hijackMedia, 500);
+        // Also observe DOM changes
+        var observer = new MutationObserver(hijackMedia);
+        observer.observe(document.body, { childList: true, subtree: true });
+        // Stop polling after 30s
+        setTimeout(function() { clearInterval(interval); }, 30000);
+      })();
+    </script>
   </body>
 </html>
