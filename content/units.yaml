@@ -37,7 +37,7 @@ units:
   - title: 1 Bedroom — Plan B-EastE
     floor_plan: /images/1Br-PlanB/one_bedroom-696-sq-ft.gif
     photos_folder: 1Br-PlanB
-    price_range: $1,000
+    price_range: $1,020
     sq_ft: null
     availability: Waitlist
     features:
